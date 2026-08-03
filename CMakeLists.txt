@@ -10,3 +10,5 @@ add_executable(gravity
 )
 
 target_link_libraries(gravity PRIVATE raylib)
+
+file(COPY ephemeris.csv DESTINATION ${CMAKE_BINARY_DIR})
