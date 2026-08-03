@@ -1,6 +1,6 @@
 ﻿# Solar System State Vectors
 # Source: JPL Horizons, barycentric (@0), epoch 2026-Aug-03 00:00 TDB
-"# Units: mass kg, radius m, position m, velocity m/s
+# Units: mass kg, radius m, position m, velocity m/s
 ,,,,,,,,,,,
 Name,Mass,Radius,R,G,B,Pos_X,Pos_Y,Pos_Z,Vel_X,Vel_Y,Vel_Z
 Sun,1.989E+30,6.957E+8,255,245,242,-2.407E+08,07.892E+08,1.530E+07,1.089E+01,3.636E0,-2.262E-01
