@@ -27,6 +27,9 @@ constexpr double dt = 86400.0;      // 1 day per frame
 constexpr int SCREEN_WIDTH = 1280;
 constexpr int SCREEN_HEIGHT = 720;
 
+// meters to pixels
+constexpr double SCALE = 6e-11;
+
 struct Vec2 {
     double x, y;
 };
@@ -109,7 +112,18 @@ int main() {
         //    double dx = bodies[3].position.x - bodies[0].position.x;
         //    double dy = bodies[3].position.y - bodies[0].position.y;
         //    printf("frame %d  r = %.4e\n", frame, std::sqrt(dx*dx + dy*dy));
+
+        BeginDrawing();
+        ClearBackground(BLACK);
+
+        for (int i = 0; i < count; i++) {
+            double screen_x = (double)(SCREEN_WIDTH  / 2 + bodies[i].position.x * SCALE);
+            double screen_y = (double)(SCREEN_HEIGHT / 2 - bodies[i].position.y * SCALE);
+
+            DrawCircle((int)screen_x, (int)screen_y, 6, bodies[i].color);
         }
+
+        EndDrawing();
 
     }
     CloseWindow();
