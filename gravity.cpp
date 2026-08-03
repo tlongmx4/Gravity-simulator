@@ -112,6 +112,7 @@ int main() {
         //    double dx = bodies[3].position.x - bodies[0].position.x;
         //    double dy = bodies[3].position.y - bodies[0].position.y;
         //    printf("frame %d  r = %.4e\n", frame, std::sqrt(dx*dx + dy*dy));
+        // }
 
         BeginDrawing();
         ClearBackground(BLACK);
