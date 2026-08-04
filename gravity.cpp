@@ -185,7 +185,11 @@ int main() {
             bodies[i].position.z += bodies[i].velocity.z * dt;
         }
 
-        // test
+        // --- Orbital period check ---
+        // Earth's distance from the Sun, every 30 frames. The peaks should recur
+        // about every 360 frames, which is one Earth year at one day per timestep.
+        // Confirms the integration is producing a real orbit rather than a drift.
+
         // static int frame = 0;
         // frame++;
         // if (frame % 30 == 0) {
@@ -194,17 +198,22 @@ int main() {
         //    printf("frame %d  r = %.4e\n", frame, std::sqrt(dx*dx + dy*dy));
         // }
 
-        static int frame = 0;
-        if (++frame % 60 == 0) {
-            for (int i = 0; i < count; i++) {
-                double dx = bodies[i].position.x - bodies[0].position.x;
-                double dy = bodies[i].position.y - bodies[0].position.y;
-                double dz = bodies[i].position.z - bodies[0].position.z;
-                double r = std::sqrt(dx*dx + dy*dy + dz*dz) / 1.496e11;
-                printf("%-8s %.3f AU\n", bodies[i].name.c_str(), r);
-            }
-            printf("\n");
-        }
+        // --- Orbital range check ---
+        // Every body's distance from the Sun in AU, once a second. Compare against
+        // known perihelion and aphelion values to catch bad initial data. Mercury
+        // should swing between 0.307 and 0.467, Earth should stay near 1.0.
+
+        // static int frame = 0;
+        // if (++frame % 60 == 0) {
+        //    for (int i = 0; i < count; i++) {
+        //        double dx = bodies[i].position.x - bodies[0].position.x;
+        //        double dy = bodies[i].position.y - bodies[0].position.y;
+        //        double dz = bodies[i].position.z - bodies[0].position.z;
+        //        double r = std::sqrt(dx*dx + dy*dy + dz*dz) / 1.496e11;
+        //        printf("%-8s %.3f AU\n", bodies[i].name.c_str(), r);
+        //    }
+        //    printf("\n");
+        // }
 
         float wheel = GetMouseWheelMove();
         if (wheel != 0.0f) {
