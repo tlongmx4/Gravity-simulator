@@ -11,4 +11,6 @@ add_executable(gravity
 
 target_link_libraries(gravity PRIVATE raylib)
 
-file(COPY ephemeris.csv DESTINATION ${CMAKE_BINARY_DIR})
+add_custom_command(TARGET gravity POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/ephemeris.csv $<TARGET_FILE_DIR:gravity>)
