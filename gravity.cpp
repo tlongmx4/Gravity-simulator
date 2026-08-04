@@ -12,7 +12,7 @@
 constexpr double G = 6.67430e-11;
 
 // timestep
-constexpr double dt = 21600.0;      // 1 day per frame
+constexpr double dt = 21600.0;      // 6 hours per frame
 
 // window
 constexpr int SCREEN_WIDTH = 1280;
